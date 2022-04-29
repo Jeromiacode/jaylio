@@ -22,7 +22,7 @@ if (NODE_ENV !== 'production') {
 }
 
 // Routes
-const router = require('./routes/user-route');
+const router = require('./routes');
 app.use(router);
 
 app.listen(PORT, () => {

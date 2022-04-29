@@ -24,7 +24,7 @@ db.sequelize = sequelize;
 // Modèles DB
 db.Category = require('./category')(sequelize);
 db.Project = require('./project')(sequelize);
-db.Weber = require('./weber')(sequelize);
+db.User = require('./user')(sequelize);
 db.CategoryProject = require('./categoryProject')(sequelize);
 
 // Relation DB

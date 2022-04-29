@@ -8,19 +8,19 @@ const { DataTypes, Sequelize } = require('sequelize');
 
 module.exports = (sequelize) => {
 
-    const Weber = sequelize.define('user', {
+    const User = sequelize.define('user', {
         pseudo: {
             type: DataTypes.STRING,
             allowNull: false,
             unique: {
-                name: 'UK_Weber__Pseudo'
+                name: 'UK_User__Pseudo'
             }
         },
         email: {
             type: DataTypes.STRING(255),
             allowNull: false,
             unique: {
-                name: 'UK_Weber__Email'
+                name: 'UK_User__Email'
             }
         },
         password: {
@@ -37,5 +37,5 @@ module.exports = (sequelize) => {
         updatedAt: false
     });
 
-    return Weber;
+    return User;
 };
