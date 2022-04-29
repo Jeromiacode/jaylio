@@ -34,10 +34,17 @@ const userController = {
             return   res.send("Mais ... attends un peu, tu n'es pas Admin? :o wow");
         }
 
-        res.status(200).send("Velkom Jaaaa !");
+        // from : jwt-utl
+        const token = await generateJWT({
+            // id: user.id,
+            pseudo: user.pseudo,
+            isAdmin: user.isAdmin
+        });
+
+        res.json(token);
     }
 
 }
 
-// to : userRoute
+// to : user-rte
 module.exports = userController;
