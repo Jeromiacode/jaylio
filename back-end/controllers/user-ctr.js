@@ -9,9 +9,9 @@ const userController = {
 
         const { pseudo, email, password, isAdmin } = req.body;
         
-        //     const admin = await db.User.create({ pseudo, email, password, isAdmin });
-        //     res.send(admin)
-        // }
+        // validData : from bodyValidation
+        // const hashword = await bcrypt.hash(req.validData.password, 10);
+        // const admin = await db.User.create({ pseudo, email, hashword, isAdmin });
         
         const user = await db.User.findOne({
             where: {
@@ -35,11 +35,12 @@ const userController = {
             return   res.send("Mais ... attends un peu, tu n'es pas Admin? :o wow");
         }
 
-        // // from : jwt-utl
-        // const token = await generateJWT({
-        //     id: user.id,
-        //     pseudo: user.pseudo,
-        //     isAdmin: user.isAdmin
+        // from : jwt-utl
+        const token = await generateJWT({
+            id: user.id,
+            pseudo: user.pseudo,
+            isAdmin: user.isAdmin
+        })
 
         res.sendStatus(200);
     }
