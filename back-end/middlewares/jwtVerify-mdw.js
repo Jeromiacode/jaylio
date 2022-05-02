@@ -16,14 +16,14 @@ const jwtVerify = (options = {adminRight: false}) => {
         try {
             jwtTokenData = await decodeJWT(token)
         } catch (error) {
-            return res.status(403).send(typeof jwtTokenData);
+            return res.status(403).send(error);
         }
         
         if (options.adminRight) {
             const admin = await db.User.findOne({
                 where: {
                     [Op.and]: [
-                        // { id: jwtTokenData.id },
+                        { id: jwtTokenData.id },
                         { isAdmin: true }
                     ]
                 }  
@@ -32,8 +32,8 @@ const jwtVerify = (options = {adminRight: false}) => {
                 return res.sendStatus(403)
             }
         }
-
         req.user = jwtTokenData;
+        
         next();
     };
 };

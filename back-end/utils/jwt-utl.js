@@ -34,14 +34,14 @@ const decodeJWT = (token) => {
             audience: process.env.JWT_AUDIENCE,
             issuer: process.env.JWT_ISSUER,
         };
-        console.log("secret", secret);
+        console.log("secret", token, secret);
         jwt.verify(token, secret, optionsValid, (err, data) => {
             if (err) {
-                return reject(err);
+                console.log(err);
+                return reject(err, data);
             }
-
             resolve({
-                // id: data.id,
+                id: data.id,
                 pseudo: data.pseudo,
                 isAdmin: data.isAdmin
             });

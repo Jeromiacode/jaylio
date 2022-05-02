@@ -1,6 +1,7 @@
 const bodyValidation = (yupValidator, errorCode = 422) => {
     return (req, res, next) => {
-        yupValidator.noUnknown().validate(req.body,  {abortEarly: true})
+
+        yupValidator.noUnknown().validate(req.body,  { abortEarly: true })
         .then((data) => {
             req.validData = data;
             next();
@@ -14,6 +15,7 @@ const bodyValidation = (yupValidator, errorCode = 422) => {
                 acc[path].push(msg)
                 return acc
             }, {});
+
             res.status(errorCode).send(errors)
         });
     };

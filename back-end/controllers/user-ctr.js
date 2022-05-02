@@ -1,9 +1,10 @@
 const db = require('../models');
 const { Op } = require('sequelize');
-const bcrypt = require('bcrypt')
+const bcrypt = require('bcrypt');
+const { generateJWT } = require('../utils/jwt-utl');
+
 
 const userController = {
-
     login: async (req, res) => {
 
         const { pseudo, email, password, isAdmin } = req.body;
@@ -34,16 +35,14 @@ const userController = {
             return   res.send("Mais ... attends un peu, tu n'es pas Admin? :o wow");
         }
 
-        // from : jwt-utl
-        const token = await generateJWT({
-            // id: user.id,
-            pseudo: user.pseudo,
-            isAdmin: user.isAdmin
-        });
+        // // from : jwt-utl
+        // const token = await generateJWT({
+        //     id: user.id,
+        //     pseudo: user.pseudo,
+        //     isAdmin: user.isAdmin
 
-        res.json(token);
+        res.sendStatus(200);
     }
-
 }
 
 // to : user-rte
