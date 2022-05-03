@@ -1,32 +1,32 @@
 import { Box, Button, TextField } from '@mui/material';
-import { Controller, useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
+import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-// import { useEffect } from 'react';
-// import { userClearError, userLogin } from '../../../store/actions/user_action';
-// import { useRedirectLog } from '../../../hooks/redirect-hook';
-import userLogin from '../../../store/actions/user_action';
+import { userClearError, userLogin } from '../../store/actions/user-action';
+import { Controller, useForm } from 'react-hook-form';
+import { useRedirectLogged } from '../../hooks/redirect-hook';
 
-// schéma de validation (yup)
+// Validation du login (yup)
 const loginSchema = yup.object({
-    login: yup.string().trim().required(),
+    pseudo: yup.string().trim().required(),
     password: yup.string().required(),
 }).required();
 
 
-const UserLogin2 = () => {
-    // useRedirectLog();
+const LoginPage = () => {
+    useRedirectLogged();
 
     const dispatch = useDispatch();
 
-    // useEffect(() => {
-    //     dispatch();
-    // }, []);
+    // Lors du retour sur la page
+    useEffect(() => {
+        dispatch(userClearError);
+    }, []);
 
     const { control, handleSubmit, formState: { errors } } = useForm({
         defaultValues: {
-            login: '',
+            pseudo: '',
             password: ''
         },
         resolver: yupResolver(loginSchema),
@@ -45,13 +45,13 @@ const UserLogin2 = () => {
                     <Controller
                         render={({ field }) =>
                             <TextField
-                                error={errors.login}
+                                error={errors.pseudo}
                                 fullWidth
-                                label='Login / E-mail'
+                                label='Pseudo / E-mail'
                                 {...field}
                             />
                         }
-                        name='login'
+                        name='pseudo'
                         control={control}
                         defaultValue=''
 
@@ -83,4 +83,4 @@ const UserLogin2 = () => {
 };
 
 // to : index.js (routes)
-export default UserLogin2;
+export default LoginPage;

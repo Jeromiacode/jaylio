@@ -33,7 +33,7 @@ const userController = {
             where: {
                 [Op.or]: [
                     {   
-                        pseudo: pseudo
+                        pseudo
                     },
                     {   
                         email: { [Op.eq]: pseudo.toLowerCase() }

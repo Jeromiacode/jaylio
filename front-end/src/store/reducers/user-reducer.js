@@ -1,5 +1,5 @@
 import { createReducer } from '@reduxjs/toolkit';
-import { userLogout, userToken} from '../actions/user_action';
+import { userToken, userLogout, userSendError, userClearError} from '../actions/user-action';
 
 const initialState = {
     token: null,
@@ -22,6 +22,21 @@ const userReducer = createReducer(initialState, (builder) => {
             ...initialState
         };
     })
+    .addCase(userSendError.type, (state, action) => {
+        return {
+            ...state,
+            error: true
+        };
+    })
+    .addCase(userClearError.type, (state, action) => {
+        return {
+            ...state,
+            error: false
+        };
+    })
+    .addDefaultCase((state) => {
+        return state;
+    });
 })
 
 // to : store.js

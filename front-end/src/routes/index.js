@@ -1,4 +1,5 @@
-import UserLogin2 from '../pages/user/login/user-login';
+import LoginPage from '../pages/user/user-login';
+import LogoutPage from '../pages/user/user-logout';
 
 // to : App.js
 export const appRoutes = [
@@ -19,10 +20,10 @@ export const appRoutes = [
             children:
             [
                 {
-                    index: true, element: <h2>Pierre User</h2>
+                    path: 'login', element: <LoginPage />
                 },
                 {
-                    path: 'login', element: <UserLogin2 />
+                    path: 'logout', element: <LogoutPage />
                 },
             ]
         },

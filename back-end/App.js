@@ -23,7 +23,7 @@ if (NODE_ENV !== 'production') {
 
 // Routes
 const router = require('./routes');
-app.use(router);
+app.use('/api', router);
 
 app.listen(PORT, () => {
     console.log(`Web API up on port ${PORT} [${NODE_ENV}]`);

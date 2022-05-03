@@ -30,11 +30,6 @@ const navLinks = [
   },
   {
     name: 'User',
-    to: 'user',
-    icon: <></>,
-  },
-  {
-    name: 'UserLogin',
     to: 'user/login',
     icon: <></>,
   },
