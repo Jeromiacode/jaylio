@@ -11,6 +11,6 @@ module.exports = (sequelize) => {
     const CategoryProject = sequelize.define('categoryProject', {}, {
         timestamps: false,
     });
-
+    // to : index (models)
     return CategoryProject;
 };

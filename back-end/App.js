@@ -12,7 +12,7 @@ app.use(express.json());
 app.use(cors());
 
 // Base de donnée
-const db = require('./models');
+const db = require('./DB/models');
 db.sequelize.authenticate()
     .then(() => console.log('Connection DB - OK'))
     .catch((error) => console.log('Connection DB - Error', error));

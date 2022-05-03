@@ -15,10 +15,8 @@ const sequelize = new Sequelize(process.env.DB_DATABASE, process.env.DB_USERNAME
     }
 );
 
-// Creation de notre DB (object)
+// Creation de notre DB
 const db = {};
-
-// Add instance of Sequelize
 db.sequelize = sequelize;
 
 // Modèles DB

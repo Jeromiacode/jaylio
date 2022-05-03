@@ -33,6 +33,11 @@ const navLinks = [
     to: 'user',
     icon: <></>,
   },
+  {
+    name: 'UserLogin',
+    to: 'user/login',
+    icon: <></>,
+  },
 ];
 
 function NavMenuItem({ name, icon, to }) {

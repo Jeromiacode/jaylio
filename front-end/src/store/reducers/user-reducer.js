@@ -1,19 +1,27 @@
-import { nanoid } from 'nanoid';
-import userAction from '../actions/user_action'
-const { createReducer } = require('@reduxjs/toolkit');
+import { createReducer } from '@reduxjs/toolkit';
+import { userLogout, userToken} from '../actions/user_action';
 
 const initialState = {
-    id: nanoid(),
-    pseudo: 'Jeromia',
-    data: ''
+    token: null,
+    expire: null,
+    pseudo: null,
+    isAdmin: null,
+    error: false
 }
 
 const userReducer = createReducer(initialState, (builder) => {
-    builder.addCase(userAction.type, (state, action) => {
+    builder
+    .addCase(userToken.type, (state, action) => {
         return {
-            data: state.pseudo + action.payload
-    }
-})
+            ...state,
+            ...action.payload
+        }
+    })
+    .addCase(userLogout.type, (state, action) => {
+        return {
+            ...initialState
+        };
+    })
 })
 
 // to : store.js

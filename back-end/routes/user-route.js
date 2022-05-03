@@ -1,7 +1,7 @@
-const userController = require('../controllers/user-ctr');
-const bodyValidation = require('../middlewares/bodyValidation-mdw');
-const jwtVerify = require('../middlewares/jwtVerify-mdw');
+const userController = require('../controllers/user-ctrl');
 const loginValidator = require('../validators/user-val');
+const bodyValidation = require('../middlewares/bodyValidation-mdw');
+// const jwtVerify = require('../middlewares/jwtVerify-mdw');
 
 const userRouter = require('express').Router();
 

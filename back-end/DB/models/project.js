@@ -22,6 +22,6 @@ module.exports = (sequelize) => {
             allowNull: true
         },
     });
-
+    // to : index (models)
     return Project;
 };

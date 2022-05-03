@@ -9,5 +9,5 @@ const loginValidator = yup.object().shape({
     password: yup.string().required().min(8).max(64).matches(pwdRegex, pwdRegexMsg),
 });
 
-// to : user-route (by bodyValidation())
+// to : user-route (routes)
 module.exports = loginValidator;
