@@ -18,7 +18,7 @@ db.sequelize.authenticate()
     .catch((error) => console.log('Connection DB - Error', error));
 // Syncronisation
 if (NODE_ENV !== 'production') {
-    // db.sequelize.sync();
+    // db.sequelize.sync({ alter: true });
 }
 
 // Routes

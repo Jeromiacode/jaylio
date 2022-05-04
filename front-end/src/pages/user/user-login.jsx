@@ -1,31 +1,33 @@
-import { Box, Button, TextField } from '@mui/material';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { userClearError, userLogin } from '../../store/actions/user-action';
-import { Controller, useForm } from 'react-hook-form';
+import { useForm } from 'react-hook-form';
 import { useRedirectLogged } from '../../hooks/redirect-hook';
-import { loginValidator } from '../../validators/login-val'
+import { loginValidator } from '../../validators/login-val';
 
 const LoginPage = () => {
+    // Si déjà loggé
     useRedirectLogged();
 
     const dispatch = useDispatch();
-
     // Lors du retour sur la page
     useEffect(() => {
         dispatch(userClearError);
-    }, []);
+    });
 
-    const { control, handleSubmit, formState: { errors } } = useForm({
+    // options formulaire et usage
+    const options = {
         defaultValues: {
             pseudo: '',
             password: ''
         },
         resolver: yupResolver(loginValidator),
         reValidateMode: 'onSubmit'
-    });
+    }
+    const { register, handleSubmit } = useForm(options)
 
+    // Envoi des données dans le store
     const onSubmit = ({ pseudo, password }) => {
         dispatch(userLogin({ pseudo, password }));
     };
@@ -33,42 +35,10 @@ const LoginPage = () => {
     return (
         <>
             <h1>Login</h1>
-            <form onSubmit={handleSubmit(onSubmit)} >
-                <Box gap='20px' display='flex' flexDirection='column'  >
-                    <Controller
-                        render={({ field }) =>
-                            <TextField
-                                error={errors.pseudo}
-                                fullWidth
-                                label='Pseudo / E-mail'
-                                {...field}
-                            />
-                        }
-                        name='pseudo'
-                        control={control}
-                        defaultValue=''
-
-                    />
-                    <Controller
-                        render={({ field }) =>
-                            <TextField
-                                error={errors.password}
-                                fullWidth
-                                label='Password'
-                                type='password'
-                                {...field} />
-                        }
-                        name='password'
-                        control={control}
-                        defaultValue=''
-
-
-                    />
-
-                    <Box alignSelf='flex-start'>
-                        <Button variant='contained' type='submit' >Login</Button>
-                    </Box>
-                </Box>
+            <form onSubmit={handleSubmit(onSubmit)}>
+                    <input {...register('pseudo')} />
+                    <input {...register('password')} />
+                <button type="submit">Login</button>
             </form>
         </>
 
