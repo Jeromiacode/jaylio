@@ -11,5 +11,5 @@ export const useRedirectLogged = () => {
         if (user.token) {
             navigate('/user/logout')
         }
-    }, [user])
+    })
 };

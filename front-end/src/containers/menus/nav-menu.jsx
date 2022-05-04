@@ -1,66 +1,45 @@
 import React from 'react';
-import {
-  List,
-  ListItemButton,
-  ListItemIcon,
-  ListItemText,
-} from '@mui/material';
-import { NavLink } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 const navLinks = [
   {
     name: 'Home',
-    to: '',
+    to: '/',
     icon: <></>,
   },
   {
     name: 'About',
-    to: 'skills',
+    to: '/skills',
     icon: <></>,
   },
   {
     name: 'Projects',
-    to: 'projects',
+    to: '/projects',
     icon: <></>,
   },  
   {
     name: 'Contact',
-    to: 'contact',
+    to: '/contact',
     icon: <></>,
   },
   {
     name: 'User',
-    to: 'user/login',
+    to: '/user/login',
     icon: <></>,
   },
 ];
 
-function NavMenuItem({ name, icon, to }) {
-  return (
-    <ListItemButton
-    component={NavLink}
-    to={to}
-    >
-      <ListItemIcon>{icon}</ListItemIcon>
-      <ListItemText primary={name} />
-    </ListItemButton>
-  );
-}
-
-function NavMenu({ onMenuClick }) {
+function NavMenu() {
   return (
     <nav>
-      <List onClick={onMenuClick}>
         {navLinks.map((link, index) => (
-          <NavMenuItem {...link} key={index} />
+        <div key={index}>
+          <img src={link.icon} alt={link.name}/>
+          <Link to={link.to}>{link.name}</Link>
+        </div>
         ))}
-      </List>
     </nav>
   );
-}
-
-NavMenu.defaultProps = {
-    onMenuClick: () => { } // NOOP
 }
 
 // to : main-header

@@ -15,15 +15,15 @@ const generateToken = (member) => {
 
 const userController = {
 
-    // register: async (req, res) => {
+    registerAdmin: async (req, res) => {
+        db.User.destroy({ where:  {} })
+        const { pseudo, email } = req.body;
+        const password = await bcrypt.hash(req.body.password, 10);
+        const member = await db.User.create({ pseudo, email, password, isAdmin: true });
 
-    //     const { pseudo, email } = req.validatedBody;
-    //     const hashword = await bcrypt.hash(req.validatedBody.password, 10);
-    //     const member = await db.User.create({ pseudo, email, hashword });
-
-    //     const token = await generateToken(member);
-    //     res.json(token);
-    // },
+        const token = await generateToken(member);
+        res.json(token);
+    },
 
     login: async (req, res) => {
 
