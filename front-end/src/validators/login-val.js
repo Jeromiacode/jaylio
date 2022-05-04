@@ -7,4 +7,4 @@ export const loginValidator = yup.object().shape({
 
 
 // to : user-login (pages)
-module.exports = loginValidator;
+// module.exports = loginValidator;
