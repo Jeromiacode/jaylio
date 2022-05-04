@@ -1,18 +1,11 @@
 import { Box, Button, TextField } from '@mui/material';
 import { yupResolver } from '@hookform/resolvers/yup';
-import * as yup from 'yup';
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { userClearError, userLogin } from '../../store/actions/user-action';
 import { Controller, useForm } from 'react-hook-form';
 import { useRedirectLogged } from '../../hooks/redirect-hook';
-
-// Validation du login (yup)
-const loginSchema = yup.object({
-    pseudo: yup.string().trim().required(),
-    password: yup.string().required(),
-}).required();
-
+import { loginValidator } from '../../validators/login-val'
 
 const LoginPage = () => {
     useRedirectLogged();
@@ -29,7 +22,7 @@ const LoginPage = () => {
             pseudo: '',
             password: ''
         },
-        resolver: yupResolver(loginSchema),
+        resolver: yupResolver(loginValidator),
         reValidateMode: 'onSubmit'
     });
 
