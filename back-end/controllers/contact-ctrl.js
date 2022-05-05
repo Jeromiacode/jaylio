@@ -2,14 +2,14 @@ const db = require('../DB/models');
 
 const messageController = {
 
-    add: async (req, res) => {
+    addMessage: async (req, res) => {
         const { name, email, title, content, website, company } = req.body;
         await db.Message.create({ name, email, title, content, website, company });
         const messages = await db.Message.findAll()
 
         res.status(200).json(messages);
     },
-    delete: async (req, res) => {
+    deleteMessage: async (req, res) => {
         const id = parseInt(req.params.id);
         const { isAdmin } = req.user;
 

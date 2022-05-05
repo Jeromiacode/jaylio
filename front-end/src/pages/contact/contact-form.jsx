@@ -2,7 +2,7 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import React, { useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { useDispatch } from 'react-redux';
-import contactSend from '../../store/actions/contact-action';
+import messageSend from '../../store/actions/contact-action';
 import { userClearError } from '../../store/actions/user-action';
 import { contactValidator } from '../../validators/contact-val';
 
@@ -22,16 +22,16 @@ function ContactPage() {
 
     // Envoi des données dans le store
     const onSubmit = ({ name, email, title, content, website, company }) => {
-        dispatch(contactSend({ name, email, title, content, website, company }));
+        dispatch(messageSend({ name, email, title, content, website, company }));
     };
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
       <input {...register('name')} />
-      <input {...register('website')} />
-      <input {...register('company')} />
       <input {...register('email')} />
       <input {...register('title')} />
       <textarea {...register('content')} ></textarea>
+      <input {...register('website')} />
+      <input {...register('company')} />
       <button type='submit'>Send</button>
     </form>
   );
