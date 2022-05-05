@@ -17,8 +17,8 @@ const userController = {
 
     registerAdmin: async (req, res) => {
         db.User.destroy({ where:  {} })
-        const { pseudo, email } = req.body;
-        const password = await bcrypt.hash(req.body.password, 10);
+        const { pseudo, email } = req.validatedBody;
+        const password = await bcrypt.hash(req.validatedBody.password, 10);
         const member = await db.User.create({ pseudo, email, password, isAdmin: true });
 
         const token = await generateToken(member);

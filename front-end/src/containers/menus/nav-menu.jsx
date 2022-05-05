@@ -23,8 +23,8 @@ const navLinks = [
     icon: <></>,
   },
   {
-    name: 'User',
-    to: '/user/login',
+    name: 'Login',
+    to: '/admin/login',
     icon: <></>,
   },
 ];

@@ -1,5 +1,6 @@
-import LoginPage from '../pages/user/user-login';
-import LogoutPage from '../pages/user/user-logout';
+import LoginPage from '../pages/admin/admin-login';
+import LogoutPage from '../pages/admin/admin-logout';
+import ContactPage from '../pages/contact/contact-form';
 
 // to : App.js
 export const appRoutes = [
@@ -9,14 +10,14 @@ export const appRoutes = [
             {
             path: 'skills', element: <h1>Pierre CV</h1>
         },
-            {
-            path: 'contact', element: <h1>Pierre contact</h1>
-        },
-            {
+        {
             path: 'projects', element: <h1>Pierre Projects</h1>
         },
-            {
-            path: 'user', 
+        {
+            path: 'contact', element: <ContactPage/>
+        },
+        {
+            path: 'admin', 
             children:
             [
                 {

@@ -16,5 +16,5 @@ function LogoutPage() {
         <button onClick={handleClick}>Logout</button>
   )
 }
-
+// to : index.js (routes)
 export default LogoutPage

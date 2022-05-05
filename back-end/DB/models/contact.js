@@ -8,13 +8,29 @@ const { DataTypes, Sequelize } = require('sequelize');
 
 module.exports = (sequelize) => {
 
-    const Message = sequelize.define('message', {
+    const Contact = sequelize.define('message', {
         id: {
             type: DataTypes.BIGINT,
             autoIncrement: true,
             primaryKey: true
         },
         title: {
+            type: DataTypes.STRING,
+            allowNull: true
+        },
+        name: {
+            type: DataTypes.STRING,
+            allowNull: false
+        },
+        email: {
+            type: DataTypes.STRING,
+            allowNull: false
+        },
+        website: {
+            type: DataTypes.STRING,
+            allowNull: true
+        },
+        company: {
             type: DataTypes.STRING,
             allowNull: true
         },
@@ -28,5 +44,5 @@ module.exports = (sequelize) => {
         updatedAt: false
     });
     // to : index (models)
-    return Message;
+    return Contact;
 };

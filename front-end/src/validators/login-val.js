@@ -6,5 +6,5 @@ export const loginValidator = yup.object().shape({
 }).required();
 
 
-// to : user-login (pages)
+// to : admin-login (pages)
 // module.exports = loginValidator;

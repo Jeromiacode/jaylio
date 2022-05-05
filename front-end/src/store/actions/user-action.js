@@ -20,7 +20,7 @@ export const userClearError = createAction('user/clearError');
 
 export const userLogin = ({ pseudo, password }) => {
     return (dispatch) => {
-        axios.post('http://localhost:8080/api/user/login', { pseudo, password })
+        axios.post('http://localhost:8080/api/admin/login', { pseudo, password })
         .then(({data}) => {
             dispatch(userToken(data));
         })
@@ -29,18 +29,6 @@ export const userLogin = ({ pseudo, password }) => {
         })
     };
 };
-
-// export const userRegister = ({ pseudo, email, password }) => {
-//     return (dispatch) => {
-//         axios.post('http://localhost:8080/api/user/register', { pseudo, email, password })
-//         .then(({ data }) => {
-//             dispatch(userToken(data));
-//         })
-//         .catch(() => {
-//             dispatch(userSendError());
-//         })
-//     };
-// };
 
 // to : user-reducer (reducers)
 export default userLogin;
