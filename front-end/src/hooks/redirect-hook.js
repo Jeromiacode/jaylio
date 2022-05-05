@@ -9,7 +9,7 @@ export const useRedirectLogged = () => {
 
     useEffect(() => {
         if (user.token) {
-            navigate('/user/logout')
+            navigate('/admin/logout')
         }
-    }, [user])
+    })
 };

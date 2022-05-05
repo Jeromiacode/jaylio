@@ -20,9 +20,10 @@ const db = {};
 db.sequelize = sequelize;
 
 // Modèles DB
-db.Category = require('./category')(sequelize);
-db.Project = require('./project')(sequelize);
 db.User = require('./user')(sequelize);
+db.Message = require('./contact')(sequelize);
+db.Project = require('./project')(sequelize);
+db.Category = require('./category')(sequelize);
 db.CategoryProject = require('./categoryProject')(sequelize);
 
 // Relation DB

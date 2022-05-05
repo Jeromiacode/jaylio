@@ -9,6 +9,11 @@ const { DataTypes, Sequelize } = require('sequelize');
 module.exports = (sequelize) => {
 
     const User = sequelize.define('user', {
+        id: {
+            type: DataTypes.BIGINT,
+            autoIncrement: true,
+            primaryKey: true
+        },
         pseudo: {
             type: DataTypes.STRING,
             allowNull: false,
@@ -32,7 +37,8 @@ module.exports = (sequelize) => {
             allowNull: false,
             defaultValue: false
         }
-    }, {
+    },
+    {
         timestamps: true,
         updatedAt: false
     });

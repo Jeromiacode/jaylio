@@ -1,6 +1,6 @@
 const bodyValidation = (validatorYup, errorCode = 422) => {
     return (req, res, next) => {
-        validatorYup.noUnknown().validate(req.body,  { abortEarly: true })
+        validatorYup.noUnknown().validate(req.body, { abortEarly: true })
         .then((data) => {
             req.validatedBody = data;
             next();
