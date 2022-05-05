@@ -10,7 +10,7 @@ const store = configureStore({
         user: userReducer,
         message: contactReducer
     },
-    middleware: (getDefaultMiddleware) => [...getDefaultMiddleware(), logger],
+    middleware: (getDefaultMiddleware) => [...getDefaultMiddleware({serializableCheck: false}), logger],
     devTools: process.env.NODE_ENV === "development",
 });
 

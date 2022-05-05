@@ -8,8 +8,8 @@ const { DataTypes, Sequelize } = require('sequelize');
 
 module.exports = (sequelize) => {
 
-    const Contact = sequelize.define('message', {
-        id: {
+    const Message = sequelize.define('message', {
+        message_id: {
             type: DataTypes.BIGINT,
             autoIncrement: true,
             primaryKey: true
@@ -44,5 +44,5 @@ module.exports = (sequelize) => {
         updatedAt: false
     });
     // to : index (models)
-    return Contact;
+    return Message;
 };

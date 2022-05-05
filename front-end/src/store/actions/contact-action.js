@@ -1,15 +1,17 @@
 import axios from 'axios';
 import { createAction } from '@reduxjs/toolkit'
 
-export const contactSendMessage = createAction('contact/sendMessage', ({ name, email, title, content, website, company }) => {
+export const contactSendMessage = createAction('contact/sendMessage', ({ message_id, title, name, email, website, company, content, createdAt}) => {
     return {
         payload: {
+            message_id,
+            title,
             name,
             email,
-            title,
-            content,
             website,
-            company
+            company,
+            content,
+            createdAt
         }
     };
 });
