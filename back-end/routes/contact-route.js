@@ -5,8 +5,14 @@ const jwtVerify = require('../middlewares/jwtVerify-mdw');
 
 const userRouter = require('express').Router();
 
-userRouter.route('/send').post(bodyValidation(messageValidator), userController.addMessage);
-userRouter.route('/:id([0-9]+)').delete(jwtVerify(), userController.deleteMessage);
+userRouter.route('/')
+.get(jwtVerify(), userController.getAll)
+
+userRouter.route('/:id([0-9]+)')
+.delete(jwtVerify(), userController.delete)
+.get(jwtVerify(), userController.getOne)
+
+userRouter.route('/send').post(bodyValidation(messageValidator), userController.create)
 
 // to : index (routes)
 module.exports = userRouter;

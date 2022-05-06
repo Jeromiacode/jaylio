@@ -24,11 +24,10 @@ db.User = require('./user')(sequelize);
 db.Message = require('./contact')(sequelize);
 db.Project = require('./project')(sequelize);
 db.Category = require('./category')(sequelize);
-db.CategoryProject = require('./categoryProject')(sequelize);
 
 // Relation DB
-db.Project.belongsToMany(db.Category, { through: db.CategoryProject });
-db.Category.belongsToMany(db.Project, { through: db.CategoryProject });
+db.Category.hasMany(db.Project)
+db.Project.belongsTo(db.Category);
 
 // to : App.js
 module.exports = db;

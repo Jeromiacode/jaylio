@@ -9,7 +9,7 @@ const { DataTypes, Sequelize } = require('sequelize');
 module.exports = (sequelize) => {
 
     const Message = sequelize.define('message', {
-        message_id: {
+        id: {
             type: DataTypes.BIGINT,
             autoIncrement: true,
             primaryKey: true

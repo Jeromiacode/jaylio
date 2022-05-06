@@ -22,8 +22,9 @@ export const contactClearError = createAction('contact/clearError');
 export const messageSend = ({ name, email, title, content, website, company }) => {
     return (dispatch) => {
         axios.post('http://localhost:8080/api/message/send', { name, email, title, content, website, company })
-        .then(({message}) => {
-            dispatch(contactSendMessage(message));
+        .then(({data}) => {
+            console.log(data);
+            dispatch(contactSendMessage(data));
         })
         .catch((err) => {
             dispatch(contactSendError(err));
