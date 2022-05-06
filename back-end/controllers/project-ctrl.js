@@ -41,6 +41,19 @@ const projectController = {
 
         res.status(200).json(projectCreated);
     },
+    addPicture: async (req, res) => {
+        const { isAdmin } = req.user;
+
+        if (!isAdmin) {
+            return res.sendStatus(403);
+        }
+        
+        if (!req.body) {
+            return res.sendStatus(404);
+        }
+
+        res.status(200).send();
+    },
     update: async (req, res) => {
         const id = parseInt(req.params.id);
         const { isAdmin } = req.user;

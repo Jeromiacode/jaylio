@@ -8,8 +8,10 @@ const { PORT, NODE_ENV } = process.env;
 const app = express();
 
 // Middlewares
+app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(cors());
+app.use(express.static('storage'));
 
 // Base de donnée
 const db = require('./DB/models');

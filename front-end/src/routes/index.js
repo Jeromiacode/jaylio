@@ -1,6 +1,7 @@
 import LoginPage from '../pages/admin/admin-login';
 import LogoutPage from '../pages/admin/admin-logout';
 import ContactPage from '../pages/contact/contact-form';
+import ProjectPage from '../pages/project/project-form';
 
 // to : App.js
 export const appRoutes = [
@@ -11,7 +12,7 @@ export const appRoutes = [
             path: 'skills', element: <h1>Pierre CV</h1>
         },
         {
-            path: 'projects', element: <h1>Pierre Projects</h1>
+            path: 'projects', element: <ProjectPage/>
         },
         {
             path: 'contact', element: <ContactPage/>

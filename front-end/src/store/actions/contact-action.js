@@ -23,7 +23,6 @@ export const messageSend = ({ name, email, title, content, website, company }) =
     return (dispatch) => {
         axios.post('http://localhost:8080/api/message/send', { name, email, title, content, website, company })
         .then(({data}) => {
-            console.log(data);
             dispatch(contactSendMessage(data));
         })
         .catch((err) => {
