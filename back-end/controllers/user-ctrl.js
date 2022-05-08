@@ -4,26 +4,15 @@ const bcrypt = require('bcrypt');
 const { generateJWT } = require('../utils/jwt-util');
 
 // from : jwt-util (utils)
-const generateToken = (member) => {
+const generateToken = (user) => {
     return generateJWT({
-        id: member.id,
-        pseudo: member.pseudo,
-        isAdmin: member.isAdmin
+        id: user.id,
+        pseudo: user.pseudo,
+        isAdmin: user.isAdmin
     });
 };
 
-
 const userController = {
-
-    registerAdmin: async (req, res) => {
-        db.User.destroy({ where:  {} })
-        const { pseudo, email } = req.validatedBody;
-        const password = await bcrypt.hash(req.validatedBody.password, 10);
-        const member = await db.User.create({ pseudo, email, password, isAdmin: true });
-
-        const token = await generateToken(member);
-        res.json(token);
-    },
 
     login: async (req, res) => {
 

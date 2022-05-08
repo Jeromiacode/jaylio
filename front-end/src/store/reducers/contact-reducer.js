@@ -1,5 +1,5 @@
 import { createReducer } from '@reduxjs/toolkit';
-import { contactSendError, contactClearError} from '../actions/contact-action';
+import { contactSendError, contactClearError, contactSendMessage} from '../actions/contact-action';
 
 const initialState = {
     error: false
@@ -7,6 +7,12 @@ const initialState = {
 
 const contactReducer = createReducer(initialState, (builder) => {
     builder
+    .addCase(contactSendMessage.type, (state, action) => {
+        return {
+            ...state,
+            ...action.payload
+        };
+    })
     .addCase(contactSendError.type, (state, action) => {
         return {
             ...state,

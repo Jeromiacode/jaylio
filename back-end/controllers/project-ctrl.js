@@ -1,7 +1,34 @@
 const db = require('../DB/models');
+const fs = require('fs');
 
 const projectController = {
+    create: async (req, res) => {
+        // const { isAdmin } = req.user;
 
+        // if (!isAdmin) {
+        //     return res.sendStatus(403);
+        // }
+        
+        const { name, description, link, categoryId } = req.body;
+        const projectCreated = await db.Project.create({ name, description, link, categoryId });
+
+        res.status(200).json(projectCreated);
+    },
+    addPicture: async (req, res) => {
+        if (!req.body) {
+            return res.sendStatus(404);
+        }
+
+        res.status(200).json(req.files);
+    },
+    getPictures: async (req, res) => {
+        const imageName = req.body.name;
+        fs.readFile(`./storage/${imageName}.jpeg`, function(err, data) {
+            if (err) throw err;
+              res.writeHead(200, {'Content-Type': 'image/jpeg'});
+              res.end(data);
+          });
+    },
     getOne: async (req, res) => {
         const id = parseInt(req.params.id);
 
@@ -28,31 +55,6 @@ const projectController = {
         }
 
         res.status(200).json(rows);
-    },
-    create: async (req, res) => {
-        const { isAdmin } = req.user;
-
-        if (!isAdmin) {
-            return res.sendStatus(403);
-        }
-        
-        const { name, description, link, categoryId } = req.body;
-        const projectCreated = await db.Project.create({ name, description, link, categoryId });
-
-        res.status(200).json(projectCreated);
-    },
-    addPicture: async (req, res) => {
-        const { isAdmin } = req.user;
-
-        if (!isAdmin) {
-            return res.sendStatus(403);
-        }
-        
-        if (!req.body) {
-            return res.sendStatus(404);
-        }
-
-        res.status(200).send();
     },
     update: async (req, res) => {
         const id = parseInt(req.params.id);
