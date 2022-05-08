@@ -8,19 +8,16 @@ import { contactValidator } from '../validators/contact-val';
 
 function ContactPage() {
     const dispatch = useDispatch();
-    // Lors du retour sur la page
     useEffect(() => {
         dispatch(userClearError);
     });
 
-    // options formulaire et usage
     const options = {
         resolver: yupResolver(contactValidator),
         reValidateMode: 'onSubmit'
     }
     const { register, handleSubmit } = useForm(options)
 
-    // Envoi des données dans le store
     const onSubmit = ({ name, email, title, content, website, company }, e) => {
       e.preventDefault();
       dispatch(sendMessage({ name, email, title, content, website, company }));

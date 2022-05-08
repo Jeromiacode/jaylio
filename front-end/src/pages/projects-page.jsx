@@ -1,52 +1,50 @@
 // import { yupResolver } from '@hookform/resolvers/yup';
-import axios from "axios";
+// import { contactValidator } from '../../validators/contact-val';
 import React, { useEffect } from "react";
 import { useSelector } from "react-redux";
 import { useForm } from "react-hook-form";
 import { useDispatch } from "react-redux";
-import { contactSendError } from "../store/actions/contact-action";
 import { userClearError } from "../store/actions/user-action";
-import RichTextEditor from "../components/rich-text-editor";
-// import ProjectForm from '../../components/rich-text-editor';
-// import { contactValidator } from '../../validators/contact-val';
+import projectSave from "../store/actions/project-action";
 
 const ProjectPage = () => {
+  // L'affichage de la page Projects variera si l'administrateur est connecté ou non
   const connectedUser = useSelector((s) => s.user);
   const admin = connectedUser.isAdmin;
-  console.log(connectedUser);
-  const dispatch = useDispatch();
+
   // Lors du retour sur la page
+  const dispatch = useDispatch();
   useEffect(() => {
     dispatch(userClearError);
   });
 
-  // options formulaire et usage
+  // options formulaire et validation
   const options = {
     // resolver: yupResolver(contactValidator),
     reValidateMode: "onSubmit",
   };
-  const { register, handleSubmit } = useForm(options);
+  const { register, handleSubmit, reset } = useForm(options);
 
   // Envoi des données dans le store
-  // useEffect(() => {
-  const onSubmit = ({ name, description }) => {
-    axios
-      .post("http://localhost:8080/api/project/create", { name, description })
-      .then(({ data }) => {
-        console.log(data);
-        dispatch(data);
-      })
-      .catch((err) => {
-        dispatch(contactSendError(err));
-      });
+  const onSubmit = async (data) => {
+    const {name, description} = data
+    dispatch(projectSave({ name, description }));
+
+    const formData = new FormData();
+    formData.append("file", data.file[0]);
+    const res = await fetch("http://localhost:8080/api/project/create", {
+        method: "POST",
+        body: formData,
+    })
+    .then((res) => res.json());
+    console.log(res);
+    reset();
   };
-  // }, []);
 
   return (
-    //   method='post' encType='multipart/form-data'
     <>
       {!admin ? (
-        <p>cool</p>
+        <p>Display Projects</p>
       ) : (
         <form
           onSubmit={handleSubmit(onSubmit)}
@@ -55,9 +53,8 @@ const ProjectPage = () => {
         >
           <input {...register("name")} />
           <input {...register("description")} />
-          <RichTextEditor />
           <input {...register("link")} />
-          <input type="file" name="picture" />
+          <input {...register("file")} type="file" />
           <button type="submit">Send</button>
         </form>
       )}
