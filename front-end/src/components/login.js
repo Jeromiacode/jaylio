@@ -5,7 +5,7 @@ import { userClearError, userLogin } from "../store/actions/user-action";
 import { useForm } from "react-hook-form";
 import { useRedirectLogged } from "../hooks/redirect-hook";
 import { loginValidator } from "../validators/login-val";
-import styles from './components.module.css'
+import styles from "./components.module.css";
 
 const Login = () => {
   // Si déjà loggé
@@ -36,11 +36,17 @@ const Login = () => {
   return (
     <div className={styles.login}>
       <form onSubmit={handleSubmit(onSubmit)}>
-        <label>Pseudo </label>
-        <input {...register("pseudo")} />
-        <label>Password </label>
-        <input {...register("password")} />
-        <button type="submit">Login</button>
+        <div>
+          <label>Pseudo </label>
+          <input {...register("pseudo")} />
+        </div>
+        <div>
+          <label>Password </label>
+          <input {...register("password")} />
+        </div>
+        <div>
+          <button type="submit">Login</button>
+        </div>
       </form>
     </div>
   );

@@ -5,7 +5,7 @@ import SkillsPage from '../pages/skills-page';
 
 const HomeRoute = () => {
   return (
-    <>
+    <main>
       <div id='home'>
         <HomePage />
       </div>
@@ -15,7 +15,7 @@ const HomeRoute = () => {
       <div id='contact'>
         <ContactPage />
       </div>
-    </>
+    </main>
   );
 };
 // to : index.js (routes)
