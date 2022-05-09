@@ -10,12 +10,10 @@
 **********************
 **Database**
  - sequelize
- - tedious
 **********************
 **Utils**
  - dotenv-flow
  - cross-env
- - morgan
 **********************
 **Dev Tools**
  - nodemon
