@@ -6,13 +6,12 @@ import { useForm } from 'react-hook-form';
 import { useDispatch } from 'react-redux';
 import { userClearError } from '../store/actions/user-action';
 import { projectCreate } from '../store/actions/project-action';
+import axios from 'axios';
 
 const ProjectPage = () => {
   // L'affichage de la page Projects variera si l'administrateur est connecté ou non
   const connectedUser = useSelector((s) => s.user);
   const token = connectedUser.token;
-
-  const [project, setProject] = useState([]);
 
   // Lors du retour sur la page
   const dispatch = useDispatch();
@@ -41,21 +40,34 @@ const ProjectPage = () => {
     reset();
   };
 
-  const fetchData = () => {
-    fetch('http://localhost:8080/api/project')
-      .then((data) => {
-        setProject(data);
-      });
+  // normalment on utilise la méthode .json() sur la response .then() mais grace a axios il le gère automatquement et on peu directement récupérer les data via le selecteur du même nom
+  const [projects, setProjects] = useState([]);
+
+  const getprojects = async () => {
+    await axios.get('http://localhost:8080/api/project').then(({ data }) => {
+      setProjects(data);
+    });
   };
 
   useEffect(() => {
-    fetchData();
+    getprojects();
   }, []);
 
   return (
     <>
       {!token ? (
-        <img src="http://localhost:8080/i3bga7rf_400x400.jpeg" alt="" />
+        <>
+          <div>
+            {projects.map((p) => (<>
+              <p>{p.name}</p>
+              <img
+                src={p.fileName}
+                alt=''
+                srcset=''
+              />
+            </>))}
+          </div>
+        </>
       ) : (
         <>
           <form

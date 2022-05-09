@@ -17,23 +17,43 @@ function ContactPage() {
     resolver: yupResolver(contactValidator),
     reValidateMode: 'onSubmit',
   };
-  const { register, handleSubmit } = useForm(options);
+  const { register, handleSubmit, reset } = useForm(options);
 
-  const onSubmit = ({ name, email, title, content, website, company }, e) => {
-    e.preventDefault();
+  const onSubmit = ({ name, email, title, content, website, company }) => {
     dispatch(sendMessage({ name, email, title, content, website, company }));
+    reset()
   };
 
   return (
     <div className={styles.contactPage}>
       <form onSubmit={handleSubmit(onSubmit)}>
-        <input {...register('name')} />
-        <input {...register('email')} />
-        <input {...register('title')} />
-        <textarea {...register('content')}></textarea>
-        <input {...register('website')} />
-        <input {...register('company')} />
+        <div>
+          <label htmlFor='name'>Name </label>
+          <input {...register('name')} id='name' placeholder='Required'/>
+        </div>
+        <div>
+          <label htmlFor='email'>Email </label>
+          <input {...register('email')} id='email' placeholder='Required'/>
+        </div>
+        <div>
+          <label htmlFor='title'>Object </label>
+          <input {...register('title')} id='title' placeholder='Optional'/>
+        </div>
+        <div>
+          <label htmlFor='content'>Message </label>
+          <textarea {...register('content')} id='content' placeholder='Required'></textarea>
+        </div>
+        <div>
+          <label htmlFor='website'>Website </label>
+          <input {...register('website')} id='website' placeholder='Optional'/>
+        </div>
+        <div>
+          <label htmlFor='company'>Company </label>
+          <input {...register('company')} id='company' placeholder='Optional'/>
+        </div>
+        <div>
         <button type='submit'>Send</button>
+        </div>
       </form>
     </div>
   );
