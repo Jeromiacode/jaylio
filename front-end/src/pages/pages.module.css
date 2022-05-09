@@ -1,0 +1,21 @@
+.homePage {
+    width: 100%;
+    height: 100vh;
+    background-color: bisque;
+}
+.skillsPage {
+    width: 100%;
+    height: 100vh;
+    background-color: cadetblue;
+}
+.contactPage {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    background-color: yellow;
+    align-items: center;
+    justify-content: center;
+}
+.contactPage > form {
+    height: 300px;
+}

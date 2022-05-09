@@ -26,6 +26,10 @@ module.exports = (sequelize) => {
             type: DataTypes.STRING,
             allowNull: true
         },
+        fileName: {
+            type: DataTypes.STRING,
+            allowNull: false
+        },
     });
     // to : index (models)
     return Project;

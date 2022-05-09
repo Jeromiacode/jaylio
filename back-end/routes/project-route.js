@@ -1,6 +1,5 @@
 const multer = require('multer');
 const projectController = require('../controllers/project-ctrl');
-const getImage = require('../middlewares/getImage');
 // const { projectValidator } = require('../validators/project-val');
 // const bodyValidation = require('../middlewares/bodyValidation-mdw');
 const jwtVerify = require('../middlewares/jwtVerify-mdw');
@@ -25,16 +24,16 @@ const projectRouter = require('express').Router();
 projectRouter.route('/')
 .get(projectController.getAll)
 
+projectRouter.route('/test')
+.get(projectController.getPicture)
+
 projectRouter.route('/:id([0-9]+)')
 .get(projectController.getOne)
 .delete(jwtVerify(), projectController.delete)
 .put(jwtVerify(), projectController.update)
 
 projectRouter.route('/create')
-.post(upload.single('file'), projectController.create);
-
-projectRouter.route('/test')
-.get(getImage(), projectController.getPicture)
+.post(/*jwtVerify(),*/ upload.single('file'), projectController.create);
 
 // to : index (routes)
 module.exports = projectRouter;

@@ -1,6 +1,6 @@
 const fs = require('fs');
 
-const getImage = () => {
+const displayFile = () => {
     return (req, res, next) => {
         const {name} = req.body
         fs.readFile(`./storage/${name}.png`, (err, data) => {
@@ -13,4 +13,4 @@ const getImage = () => {
 }
 
 // to : 
-module.exports = getImage;
+module.exports = displayFile;

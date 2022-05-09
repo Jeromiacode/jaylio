@@ -6,6 +6,5 @@ const userRouter = require('express').Router();
 
 userRouter.route('/login').post(bodyValidation(userValidator), userController.login);
 
-
 // to : index (routes)
 module.exports = userRouter;

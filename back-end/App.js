@@ -12,6 +12,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(cors());
 app.use(express.static('storage'));
+app.use(express.static(`${__dirname}/assets`))
 
 // Base de donnée
 const db = require('./DB/models');
@@ -20,7 +21,7 @@ db.sequelize.authenticate()
     .catch((error) => console.log('Connection DB - Error', error));
 // Syncronisation
 if (NODE_ENV !== 'production') {
-    // db.sequelize.sync({ alter: true });
+    // db.sequelize.sync({ force: true });
 }
 
 // Routes
