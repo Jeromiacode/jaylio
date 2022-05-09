@@ -1,0 +1,29 @@
+.userNav > a {
+  font-size: 30px;
+  padding: 25px;
+}
+.userNav > a:nth-child(1) {
+  position: fixed;
+  left: 0;
+}
+.userNav > a:nth-child(2) {
+  position: fixed;
+  right: 0;
+}
+.userNav > a:nth-child(3) {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  color: black;
+}
+.userNav > a:nth-child(4) {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  color: black;
+}
+
+.adminNav > a {
+  font-size: 30px;
+  padding: 25px;
+}

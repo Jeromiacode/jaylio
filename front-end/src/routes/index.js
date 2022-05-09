@@ -1,35 +1,34 @@
-import LoginPage from '../pages/admin/admin-login';
-import LogoutPage from '../pages/admin/admin-logout';
-import ContactPage from '../pages/contact/contact-form';
+import AdminRoute from './admin-route';
+import ProjectRoute from './projects-route';
+import HomeRoute from './home-route';
+import SkillsPage from '../pages/skills-page';
+import ProjectPage from '../pages/projects-page';
 
 // to : App.js
 export const appRoutes = [
-            {
-            path: '', element: <h1>Pierre home</h1>
-        },
-            {
-            path: 'skills', element: <h1>Pierre CV</h1>
+        {
+            path: '', element: <HomeRoute />
         },
         {
-            path: 'projects', element: <h1>Pierre Projects</h1>
-        },
-        {
-            path: 'contact', element: <ContactPage/>
+            path: 'projects', element: <ProjectRoute/>
         },
         {
             path: 'admin', 
             children:
             [
                 {
-                    path: 'login', element: <LoginPage />
+                    path: '', element: <AdminRoute/>
                 },
                 {
-                    path: 'logout', element: <LogoutPage />
+                    path: 'cv', element: <SkillsPage />
+                },
+                {
+                    path: 'projects', element: <ProjectPage/>
                 },
             ]
         },
         {
             path:'*',
-            element: <h1>Error</h1>
+            element: <h1>Error - unexisting route !</h1>
         },
 ];

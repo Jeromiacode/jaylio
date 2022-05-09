@@ -9,6 +9,11 @@ const { DataTypes, Sequelize } = require('sequelize');
 module.exports = (sequelize) => {
 
     const Project = sequelize.define('project', {
+        id: {
+            type: DataTypes.BIGINT,
+            autoIncrement: true,
+            primaryKey: true
+        },
         name: {
             type: DataTypes.STRING,
             allowNull: false
@@ -17,9 +22,13 @@ module.exports = (sequelize) => {
             type: DataTypes.STRING(1000),
             allowNull: false
         },
-        links: {
+        link: {
             type: DataTypes.STRING,
             allowNull: true
+        },
+        fileName: {
+            type: DataTypes.STRING,
+            allowNull: false
         },
     });
     // to : index (models)

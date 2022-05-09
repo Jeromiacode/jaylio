@@ -1,0 +1,112 @@
+.homePage {
+    width: 100%;
+    height: 100vh;
+    background-color: bisque;
+}
+.skillsPage {
+    width: 100%;
+    height: 100vh;
+    background-color: cadetblue;
+}
+.contactPage {
+    background-color: antiquewhite;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.contactPage > form {
+    min-height: 300px;
+    min-width: 800px;
+    padding: 100px;
+}
+.contactPage > form > div {
+    display: flex;
+    align-items: center;
+}
+.contactPage > form > div > label {
+    margin-right: 25px;
+    width: 125px;
+    font-size: 1.5rem;
+}
+.contactPage > form > div > input {
+    padding: 10px;
+    margin: 10px;
+    min-width: 300px;
+    border: none;
+    border-radius: 10px;
+}
+.contactPage > form > div > textarea {
+    padding: 10px;
+    margin: 10px;
+    min-width: 300px;
+    min-height: 150px;
+    border: none;
+    resize: none;
+    border-radius: 10px;
+}
+.contactPage > form > div > button {
+    font-size: 1rem;
+    cursor: pointer;
+    background-color: white;
+    padding: 15px;
+    width: 150px;
+    border: none;
+    border-radius: 10px;
+    margin-top: 25px;
+    margin-left: 330px;
+}
+.contactPage > form > div > div {
+    color: red;
+}
+.adminProject {
+    margin-top: -50px;
+    background-color: antiquewhite;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.adminProject > form {
+    min-height: 300px;
+    min-width: 800px;
+    padding: 100px;
+}
+.adminProject > form > div {
+    display: flex;
+    align-items: center;
+}
+.adminProject > form > div > label {
+    margin-right: 25px;
+    width: 125px;
+    font-size: 1.5rem;
+}
+.adminProject > form > div > input {
+    padding: 10px;
+    margin: 10px;
+    min-width: 300px;
+    border: none;
+    border-radius: 10px;
+}
+.adminProject > form > div > textarea {
+    padding: 10px;
+    margin: 10px;
+    min-width: 300px;
+    min-height: 150px;
+    border: none;
+    resize: none;
+    border-radius: 10px;
+}
+.adminProject > form > div > button {
+    font-size: 1rem;
+    cursor: pointer;
+    background-color: white;
+    padding: 15px;
+    width: 150px;
+    border: none;
+    border-radius: 10px;
+    margin-top: 25px;
+    margin-left: 330px;
+}
